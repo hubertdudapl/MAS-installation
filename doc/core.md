@@ -1,4 +1,4 @@
-# MAS Manage installation
+# MAS Core installation
 All mentioned in the project files examples you can find in the mas folder.  
 All ansible playbooks were taken from [MAS Devops Ansible Collection](https://ibm-mas.github.io/ansible-devops/)
 
