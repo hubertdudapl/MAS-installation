@@ -64,3 +64,5 @@ Customize parameters:
 ansible-playbook mas/mongo.yaml
 ```
 As a result, you get working mongo cluster and file with configuration mongo-mongoce.yml in masconfig subdirectory.
+Instalatin sesssion:  
+- [picture](../image/mongo.png)
