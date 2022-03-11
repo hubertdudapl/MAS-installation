@@ -7,7 +7,8 @@ The tool and very comprehensive instruction materials prepared by Zbyszek:
 ## My example
 Only OpenShift installation bare-metal, no ICS or Gardium. Storage Rook using second disk attached to worker nodes.
 ### Required data (you have to gather before starting an installation)
-####  Example machines configuration data, here for 3 master + 3 worker nodes
+1. **Example machines configuration data, here for 3 master + 3 worker nodes**
+  
 | Name         | IP             | MAC               |  DNS                       |Ethernet   |sda (GB) |sdb (GB)|
 | :---         |     :---:      |     :---:         |     :---:                  |   :---:   |   :---: | :---:  |
 | bastion      | 192.168.5.89   | DA:5D:C4:B8:76:2B |bastion.ocp3.hdmasdemo.pl   |ens18      | 300     |   -    |
@@ -25,16 +26,37 @@ Only OpenShift installation bare-metal, no ICS or Gardium. Storage Rook using se
 - **Ethernet** - operating system name of the ethernet card ( I take it from bastion - Fedora Server )
 - **sds** - system hard disk
 - **sdb** - secondary hard disk for Rook ( storage class )
-### [Red Hat pull secret](https://console.redhat.com/openshift/install/pull-secret)
+2. **[Red Hat pull secret]**(https://console.redhat.com/openshift/install/pull-secret)
 ![Red Hat download pull secret page](/img/rh-pull-secret.png)
-### Time server IP
+3. **Time server IP**  
 Check which server is e.g. standard for your country and provide it ( e.g. 194.146.251.100 for Poland )
-### DNS server
+4. **DNS server**  
 9.9.9.9 or of what you prefere
+### Instalation
+1. **Download tool**
+```bash
+cd ~
+dnf -y install git
+git clone https://github.com/zbychfish/gi-runner.git
+```
+2. **Start scripts which will gather installation parameters:**
+```bash
+cd ~/gi-runner
+init.sh
+```
+Bastion would be rebooted so login again.
+| NOTICE |
+|--------|
+|Remember to run variables.sh (or source variables.sh) after login, before runining ansible playbook.|
+3. **Start OCP installation palybook**
+```bash
+cd ~/gi-runner
+source variables.sh
+ansible-playbook playbook/install_all.yaml
+```
+#### My example installation session (only 3 master/worker nodes) [video](https://youtu.be/GUTF_m9SUWw)
 
-More details e.g. bastion os installation etc. look at Zbyszek's materials  
+#### More details e.g. bastion os installation etc. look at Zbyszek's materials  
 - [Manual](https://guardiumnotes.wordpress.com/2021/09/09/automation-of-openshift-and-guardium-insights-installation-on-bare-metal/#1b)  
 - [Instructional video](https://www.youtube.com/watch?v=i3HqJqFvs2s&t=1226s)
-
-[My example installation session (only 3 master/worker nodes)](https://youtu.be/GUTF_m9SUWw)
 
