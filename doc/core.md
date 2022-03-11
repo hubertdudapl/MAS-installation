@@ -10,9 +10,10 @@ All ansible playbooks were taken from [MAS Devops Ansible Collection](https://ib
 --IBMers can generate file [here](https://www.ibm.com/support/pages/ibm-support-licensing-start-page)  
 --BPs – [PartnerWorld](https://www.ibm.com/partnerworld/public)
 ## Prerequisites
-Create two subfolders in the folder from which you will issue shell commands, e.g.:
+Create two subfolders in your home folder, the one from which you will issue shell commands, e.g.:
 - **mas** – for playbooks and YAML files; copy here files from the mas folder of the project – playbooks and YAML
-- **masconfig** – for MAS configuration files created by ansible playbooks which automate the configuration of subsequent playbooks; copy MAS license file to the folder
+- **masconfig** – for MAS configuration files created by ansible playbooks which automate the configuration of subsequent playbooks; copy MAS license file to the folder  
+  
 You can create folders with the command:
 ```bash
 mkdir {mas,masconfig}
