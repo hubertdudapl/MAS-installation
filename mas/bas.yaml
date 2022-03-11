@@ -1,0 +1,13 @@
+- hosts: localhost
+  any_errors_fatal: true
+  vars:
+    bas_persistent_storage_class: rook-cephfs
+    bas_meta_storage_class: rook-ceph-block
+    mas_instance_id: masinst1
+    mas_config_dir: ~/masconfig
+    bas_contact:
+      email: 'hubert.duda@pl.ibm.com'
+      firstName: 'hubert'
+      lastName: 'duda'
+  roles:
+  - ibm.mas_devops.bas_install
