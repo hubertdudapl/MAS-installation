@@ -32,7 +32,7 @@ Check which server is e.g. standard for your country and provide it ( e.g. 194.1
 ### DNS server
 9.9.9.9 or of what you prefere
 
-MMore details e.g. bastion os installation etc. look at Zbyszek's materials
+More details e.g. bastion os installation etc. look at Zbyszek's materials
 [Manual](https://guardiumnotes.wordpress.com/2021/09/09/automation-of-openshift-and-guardium-insights-installation-on-bare-metal/#1b)
 [Instructional video](https://www.youtube.com/watch?v=i3HqJqFvs2s&t=1226s)
 
