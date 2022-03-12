@@ -6,7 +6,7 @@ All ansible playbooks were taken from [MAS Devops Ansible Collection](https://ib
 - **IBM entitlement key**[ You can dowload here](https://myibm.ibm.com/products-services/containerlibrary)
 
 ![Key download page](../img/IBM-entitle-key.png)
-- **MAS License file**  
+- **MAS License file** (only the license id matters)  
 --IBMers can generate file [here](https://www.ibm.com/support/pages/ibm-support-licensing-start-page)  
 --BPs – [PartnerWorld](https://www.ibm.com/partnerworld/public)
 ## Prerequisites
@@ -208,6 +208,14 @@ Instalatin sesssion:
 - Second launch of the playbook run [picture](../img/core-02.png)  
 
 To finish your MAS core configuration, you only have to set the MAS namespace.
-Login to MAS core, using the URL and credentials printed on the screen by the playbook and set the namespace.
+Login to MAS core, using the URL and credentials printed on the screen by the playbook and set the namespace.  
 
-![MAS Core configuration](../img/core-initial-setup.png)
+| NOTICE |
+| --- |
+|If the page will hang up with a spinning wheel, change the first part of the URL  from https://admin. to https://api.   (or open it in the second tab)  e.g. https://api.apps.ocp.hdmasdemo.pl and accept certificates. Then start again with the URL provided by the playbook.|
+
+![MAS Core configuration](../img/core-initial-setup.png)  
+
+**More information**  
+[MAS Core initial setup - video](https://www.youtube.com/watch?v=yzswvpgURlg)  
+[MAS Core UI Overview - video](https://www.youtube.com/watch?v=PsXX8qsXN8A)  
