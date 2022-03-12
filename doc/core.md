@@ -92,7 +92,7 @@ oc apply -f mas/certman.yaml
 ### IBM Suite License Service
 1. Customize ~/mas/sls.yaml file
 ```yaml
-hosts: localhost
+- hosts: localhost
   any_errors_fatal: true
   vars:
     sls_catalog_source: "{{ lookup('env', 'SLS_CATALOG_SOURCE') | default('ibm-operator-catalog', true) }}"
@@ -103,7 +103,7 @@ hosts: localhost
     sls_instance_name: "{{ lookup('env', 'SLS_INSTANCE_NAME') | default('sls', true) }}"
     sls_entitlement_username: "{{ lookup('env', 'SLS_ENTITLEMENT_USERNAME') | default('cp', true) }}"
     sls_entitlement_key:  # your entitlement here
-    sls_storage_class: rook-ceph-block # your storageclass
+    sls_storage_class: rook-ceph-block # storageclass available on your OpenShift (RWO)
     sls_domain: apps.ocp3.hdmasdemo.pl # your domain
     mas_instance_id: masinst1 # MAS instance name which you has chosen during the mongo installation
     mas_config_dir: ~/masconfig
@@ -118,7 +118,7 @@ hosts: localhost
 ```
 Customize parameters:  
  - **sls_entitlement_key** - your ibm entitlement key
- - **mongodb_storage_class** - storageclass available on your OpenShift (RWO)  
+ - **sls_storage_class** - storageclass available on your OpenShift (RWO)  
  - **sls_domain** - the domain of your OpenShift cluster  
  - **mas_instance_id** - MAS instance name which you has chosen during the mongo installation
  - **mas_config_dir** -  folder where configuration files will go 
@@ -130,3 +130,37 @@ ansible-playbook mas/sls.yaml
 ```
 Instalatin sesssion:  
 - [video](https://youtu.be/KWuLBe8RRXk)
+
+
+### Behavior Analytics Services
+1. Customize ~/mas/bas.yaml file
+```yaml
+- hosts: localhost
+  any_errors_fatal: true
+  vars:
+    bas_persistent_storage_class: rook-cephfs # storageclass available on your OpenShift (RWX)  
+    bas_meta_storage_class: rook-ceph-block # storageclass available on your OpenShift (RWO)  
+    mas_instance_id: masinst1 # MAS instance name which you has chosen during the mongo installation
+    mas_config_dir: ~/masconfig
+    bas_contact:
+      email: 'jan.kowalski@pl.ibm.com' # your email
+      firstName: 'jan'   # your first name
+      lastName: 'kowalski'      # your last name
+  roles:
+  - ibm.mas_devops.bas_install
+```
+Customize parameters:  
+ - **bas_persistent_storage_class** - storageclass available on your OpenShift (RWX)
+ - **bas_meta_storage_class** - storageclass available on your OpenShift (RWO)   
+ - **mas_instance_id** - MAS instance name which you has chosen during the mongo installation
+ - **mas_config_dir** -  folder where configuration files will go 
+ - **email** - your email  
+ - **firstName** - your first name  
+ - **lastName** -   your last name
+2. Install BAS with the command:  
+```shell
+ansible-playbook mas/bas.yaml
+```
+Instalatin sesssion:  
+- [picture](../img/bas.png)
+- [video](https://youtu.be/BPHbEhBKNbU)
