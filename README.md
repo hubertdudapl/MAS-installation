@@ -1,5 +1,6 @@
-# MAS-installation for busy people
-The purpose of the project is to provide a quick and effective tutorial on how to install MAS Manage (bare-metal, within reasonable hardware requirements), capitalizing on existing resources. It covers:
+# MAS Manage installation 
+The purpose of the project is to provide a quick and effective tutorial on how to install MAS Manage (bare-metal, within reasonable hardware requirements), capitalizing on existing resources. It was created ad-hoc, so it is what it is ;-).  
+It covers:
 - [OpenShift](doc/ocp.md)
 - [MAS Core](doc/core.md)
 - [MAS Manage](docs/manage.md)  
