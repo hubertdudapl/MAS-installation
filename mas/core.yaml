@@ -12,11 +12,9 @@
     mas_entitlement_key: 
 
     mas_config_dir: ~/masconfig
-    # start moje z palca
     custom_cluster_issuer: mas-masinst1-core-internal-issuer
     certificate_duration: "{{ lookup('env', 'CERTIFICATE_DURATION') | default('8760h0m0s', true) }}"
     certificate_renew_before: "{{ lookup('env', 'CERTIFICATE_RENEW_BEFORE') | default('720h0m0s', true) }}"
-    # koniec moje z palca  
     certManager:
       namespace: ibm-common-services
 
