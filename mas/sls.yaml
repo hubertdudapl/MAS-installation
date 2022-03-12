@@ -1,0 +1,23 @@
+- hosts: localhost
+  any_errors_fatal: true
+  vars:
+    sls_catalog_source: "{{ lookup('env', 'SLS_CATALOG_SOURCE') | default('ibm-operator-catalog', true) }}"
+    sls_channel: "{{ lookup('env', 'SLS_CHANNEL') | default('3.x', true) }}"
+    sls_namespace: "{{ lookup('env', 'SLS_NAMESPACE') | default('ibm-sls', true) }}"
+    sls_icr_cp: "{{ lookup('env', 'SLS_ICR_CP') | default('cp.icr.io/cp', true) }}"
+    sls_icr_cpopen: "{{ lookup('env', 'SLS_ICR_CPOPEN') | default('icr.io/cpopen', true) }}"
+    sls_instance_name: "{{ lookup('env', 'SLS_INSTANCE_NAME') | default('sls', true) }}"
+    sls_entitlement_username: "{{ lookup('env', 'SLS_ENTITLEMENT_USERNAME') | default('cp', true) }}"
+    sls_entitlement_key: 
+    sls_storage_class: rook-ceph-block
+    sls_domain: apps.ocp3.hdmasdemo.pl
+    mas_instance_id: masinst1
+    mas_config_dir: ~/masconfig
+    sls_cfg_file: "{{ mas_config_dir }}/sls.yml"
+    mongodb_cfg_file: "{{mas_config_dir}}/mongo-mongoce.yml"
+    bootstrap:
+      license_id: da5dc3b8762b
+      registration_key: "{{ lookup('env', 'SLS_REGISTRATION_KEY') | default('', true) }}"
+      entitlement_file: "{{mas_config_dir}}/license.dat"
+  roles:
+    - ibm.mas_devops.sls_install

@@ -1,0 +1,9 @@
+- hosts: localhost
+  any_errors_fatal: true
+  vars:
+    mongodb_storage_class: rook-ceph-block
+    mas_instance_id: masinst1  
+    mas_config_dir: ~/masconfig
+  roles:
+    - ibm.mas_devops.mongodb
+

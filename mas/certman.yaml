@@ -1,0 +1,11 @@
+apiVersion: operator.ibm.com/v1alpha1
+kind: OperandRequest
+metadata:
+  name: ibm-cert-manager-request
+  namespace: ibm-common-services
+spec:
+  requests:
+    - operands:
+        - name: ibm-cert-manager-operator
+      registry: common-service
+

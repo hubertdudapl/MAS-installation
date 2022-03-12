@@ -1,0 +1,26 @@
+- hosts: localhost
+  any_errors_fatal: true
+  vars:
+    # Which MAS channel to subscribe to
+    mas_channel: "{{ lookup('env', 'MAS_CHANNEL') | default('8.x', true) }}"
+
+    # MAS configuration
+    custom_domain: "{{ lookup('env', 'MAS_DOMAIN') | default(None)}}"
+    mas_instance_id: masinst1
+
+    # MAS configuration - Entitlement
+    mas_entitlement_key: 
+
+    mas_config_dir: ~/masconfig
+    # start moje z palca
+    custom_cluster_issuer: mas-masinst1-core-internal-issuer
+    certificate_duration: "{{ lookup('env', 'CERTIFICATE_DURATION') | default('8760h0m0s', true) }}"
+    certificate_renew_before: "{{ lookup('env', 'CERTIFICATE_RENEW_BEFORE') | default('720h0m0s', true) }}"
+    # koniec moje z palca  
+    certManager:
+      namespace: ibm-common-services
+
+  roles:
+    - ibm.mas_devops.suite_install
+    - ibm.mas_devops.suite_config
+    - ibm.mas_devops.suite_verify
