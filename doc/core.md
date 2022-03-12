@@ -164,3 +164,50 @@ ansible-playbook mas/bas.yaml
 Instalatin sesssion:  
 - [picture](../img/bas.png)
 - [video](https://youtu.be/BPHbEhBKNbU)
+
+### MAS Core
+1. Customize ~/mas/core.yaml file
+```yaml
+- hosts: localhost
+  any_errors_fatal: true
+  vars:
+    # Which MAS channel to subscribe to
+    mas_channel: "{{ lookup('env', 'MAS_CHANNEL') | default('8.x', true) }}" # you can specify the exact version e.g. 8.6 or leave x (x is the newest, currently 8.7)
+
+    # MAS configuration
+    custom_domain: "{{ lookup('env', 'MAS_DOMAIN') | default(None)}}"
+    mas_instance_id: masinst1 # MAS instance name which you has chosen during the mongo installation
+
+    # MAS configuration - Entitlement
+    mas_entitlement_key: #your ibm entitlement key
+
+    mas_config_dir: ~/masconfig
+    custom_cluster_issuer: mas-masinst1-core-internal-issuer
+    certificate_duration: "{{ lookup('env', 'CERTIFICATE_DURATION') | default('8760h0m0s', true) }}"
+    certificate_renew_before: "{{ lookup('env', 'CERTIFICATE_RENEW_BEFORE') | default('720h0m0s', true) }}"
+    certManager:
+      namespace: ibm-common-services
+
+  roles:
+    - ibm.mas_devops.suite_install
+    - ibm.mas_devops.suite_config
+    - ibm.mas_devops.suite_verify
+```
+Customize parameters: 
+ - **mas_channel** - you can specify the exact version e.g. 8.6 or leave x (x is the newest, currently 8.7)
+ - **mas_instance_id** - MAS instance name which you has chosen during the mongo installation
+ - **mas_config_dir** -  folder where configuration files will go 
+2. Install BAS with the command:  
+```shell
+ansible-playbook mas/core.yaml
+```
+I had to run the playbook twice and I had to wait a long time before all the pods went up etc. Then I restarted thr playbook and everything was fine.
+
+Instalatin sesssion:  
+- First launch of the playbook run [picture](../img/core-01.png)  
+- Second launch of the playbook run [picture](../img/core-02.png)  
+
+To finish your MAS core configuration, you only have to set the MAS namespace.
+Login to MAS core, using the URL and credentials printed on the screen by the playbook and set the namespace.
+
+![MAS Core configuration](../img/core-initial-setup.png)
