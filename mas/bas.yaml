@@ -6,8 +6,8 @@
     mas_instance_id: masinst1
     mas_config_dir: ~/masconfig
     bas_contact:
-      email: 'hubert.duda@pl.ibm.com'
-      firstName: 'hubert'
-      lastName: 'duda'
+      email: 'jan.kowalski@pl.ibm.com'
+      firstName: 'jan'
+      lastName: 'kowalski'
   roles:
   - ibm.mas_devops.bas_install
