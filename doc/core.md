@@ -31,6 +31,9 @@ ansible-galaxy collection install ibm.mas_devops
 More details [here](https://ibm-mas.github.io/ansible-devops/)
 
 ### IBM Operator Catalog Activation
+| NOTICE |
+| --- |
+|Remember that you have to be logged in to OpenShift to execute any oc command or any Ansible playbooks presented here.|
 1. Enable catalog with the command:  
 ```bash
 oc apply -f mas/catalog_source.yaml -n openshift-marketplace
