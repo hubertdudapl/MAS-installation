@@ -47,7 +47,7 @@ init.sh
 Bastion would be rebooted so login again.
 | NOTICE |
 |--------|
-|Remember to run source variables.sh after login, before runining ansible playbook.|
+|Remember to run _source variables.sh_ after login, before runining ansible playbook.|
 3. **Start OCP installation palybook**
 ```bash
 cd ~/gi-runner
