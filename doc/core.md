@@ -42,7 +42,9 @@ oc get CatalogSources ibm-operator-catalog -n openshift-marketplace
 More details [here](https://github.com/IBM/cloud-pak/blob/master/reference/operator-catalog-enablement.md)  
 | NOTICE |
 | --- |
-|If you don't have experience with Ansible, don't worry in case of any problems (mostly readiness checking tasks if your OCP cluster or internet connection are slow). Ansible playbooks, tasks are idempotent it means you can run them many times against the same host and it is completely safe!|
+|If you don't have experience with Ansible, don't worry using it is quite simple. Ansible playbooks install, configure and validate the performed operations.
+ Remember, Ansible playbooks, tasks are idempotent it means you can run them many times against the same host and it is completely safe!
+So if you encounter any problems you can correct them and restart the playbook. If your infrastructure or internet connection are slow you can face problems connected with exceeding the time allowed for validation. In most cases, it would be enough just to wait for a while and check on OpenShift if all pods etc. are ready and then start playbook again.|
 
 ### MongoDB
 1. #### Customize ~/mas/mongo.yaml file
