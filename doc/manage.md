@@ -17,6 +17,18 @@ Of course, such an approach is not recommended for production environment purpos
 ```bash
 source mas/db2-maxdb.sh
 ```
+2. Wait until the db2 pod is in running status.  
 
-2. Carry out the database configuration in a way recommended by the official documentation.[link](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)
-3. Complete the setup according to the above videos.
+![db2 pod status](../img/db2-pod.png)  
+
+```yaml
+  - env:
+          - name: DB2INST1_PASSWORD
+            value: passw0rd
+```
+You can change the password for db2inst1 user in db2-maxdb.yaml file, look at excerpt above. Of course, you have to do that before running _source db2-maxdb.sh_.  
+
+3. Carry out the database configuration in a way recommended by the official documentation, using db2inst1/passw0rd credentials.[link](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
+You don't have to create a new instance you can use the present one db2inst1.  
+
+4. Complete the setup according to the videos at the top of the page.
