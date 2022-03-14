@@ -1,6 +1,6 @@
 ### MAS Manage installation
 You can install various MAS applications using Ansible playbooks provided [here](https://ibm-mas.github.io/ansible-devops/)  
-I have never used it because my infrastructure is too short for using CP4D and DB2 Warehouse cluster, but if yours is enough you can try.  
+I have never used it because my infrastructure is too small for using CP4D and DB2 Warehouse cluster, but if yours is enough you can try.  
   
 There are videos showing how to install and configure MAS Manage
 - **MAS Manage Installation Deployment Part 1** [video](https://www.youtube.com/watch?v=L5J370gslw8)  
