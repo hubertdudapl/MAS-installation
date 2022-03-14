@@ -5,7 +5,7 @@ The tool and very comprehensive instruction materials prepared by Zbyszek:
 - [Manual](https://guardiumnotes.wordpress.com/2021/09/09/automation-of-openshift-and-guardium-insights-installation-on-bare-metal/#1b)
 - [Instructional video](https://www.youtube.com/watch?v=i3HqJqFvs2s&t=1226s)
 ## My example
-Only OpenShift installation bare-metal, no ICS or Gardium. Storage Rook using second disk attached to worker nodes.
+Only OpenShift installation bare-metal, no ICS or Gardium, connected. Storage Rook using second disk attached to worker nodes.
 ### Required data (you have to gather before starting an installation)
 1. **Example machines configuration data, here for 3 master + 3 worker nodes**
   
