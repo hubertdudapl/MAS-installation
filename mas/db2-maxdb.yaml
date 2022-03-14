@@ -1,0 +1,106 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+     name: db2pvc
+  spec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+       requests:
+          storage: 20Gi
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"maxdb:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"maxdb\")].image"}]'
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: maxdb
+      app.kubernetes.io/component: maxdb
+      app.kubernetes.io/instance: maxdb
+    name: maxdb
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        deployment: maxdb
+    strategy: {}
+    template:
+      metadata:
+        annotations:
+          openshift.io/generated-by: OpenShiftNewApp
+        creationTimestamp: null
+        labels:
+          deployment: maxdb
+      spec:
+        containers:
+        - env:
+          - name: DB2INST1_PASSWORD
+            value: passw0rd
+          - name: LICENSE
+            value: accept
+          image: ibmcom/db2
+          name: maxdb
+          ports:
+          - containerPort: 60007
+            protocol: TCP
+          - containerPort: 22
+            protocol: TCP
+          - containerPort: 50000
+            protocol: TCP
+          - containerPort: 55000
+            protocol: TCP
+          - containerPort: 60006
+            protocol: TCP
+          resources: {}
+          volumeMounts:
+          - mountPath: /database
+            name: maxdb-volume-1
+        volumes:
+         - name: maxdb-volume-1
+           persistentVolumeClaim:
+             claimName: "db2pvc"
+        securityContext:
+           runAsUser: 0       
+        serviceAccount: maxdb-sa
+        serviceAccountName: maxdb-sa
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: maxdb
+      app.kubernetes.io/component: maxdb
+      app.kubernetes.io/instance: maxdb
+    name: maxdb
+  spec:
+    ports:
+    - name: 22-tcp
+      port: 22
+      protocol: TCP
+      targetPort: 22
+    - name: 50000-tcp
+      port: 50000
+      protocol: TCP
+      targetPort: 50000
+    - name: 55000-tcp
+      port: 55000
+      protocol: TCP
+      targetPort: 55000
+    - name: 60006-tcp
+      port: 60006
+      protocol: TCP
+      targetPort: 60006
+    - name: 60007-tcp
+      port: 60007
+      protocol: TCP
+      targetPort: 60007
+    selector:
+      deployment: maxdb
+kind: List
+metadata: {}
