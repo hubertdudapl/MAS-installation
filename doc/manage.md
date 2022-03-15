@@ -28,7 +28,7 @@ source mas/db2-maxdb.sh
 ```
 You can change the password for db2inst1 user in db2-maxdb.yaml file, look at excerpt above. Of course, you have to do that before running _source db2-maxdb.sh_.  
 
-3. Carry out the database configuration in a way recommended by the official documentation, using db2inst1/passw0rd credentials.[link](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
+3. Carry out the database configuration in a way recommended by the official documentation, using db2inst1/passw0rd credentials (64-bit UNIX).[link](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
 You don't have to create a new instance you can use the present one db2inst1.  
 
 4. Complete the setup according to the videos at the top of the page.
