@@ -13,11 +13,13 @@ Of course, such an approach is not recommended for production environment purpos
 |NOTICE|
 |------|
 |Remember that you have to be logged in to OpenShift|
-1.  Start the script with the command (alternatively you can set an executable flag with _chmod +x mas/db2-maxdb.sh_ command and run _mas/db2-maxdb.sh_):
+1.  **Create db2 objects with the provided script**  
+Start the script with the command:  
+(alternatively you can set an executable flag with _chmod +x mas/db2-maxdb.sh_ command and run _mas/db2-maxdb.sh_):
 ```bash
 source mas/db2-maxdb.sh
 ```
-2. Wait until the db2 pod is in running status.  
+Wait until the db2 pod is in running status.  
 
 ![db2 pod status](../img/db2-pod.png)  
 
@@ -28,7 +30,23 @@ source mas/db2-maxdb.sh
 ```
 You can change the password for db2inst1 user in db2-maxdb.yaml file, look at excerpt above. Of course, you have to do that before running _source db2-maxdb.sh_.  
 
-3. Carry out the database configuration in a way recommended by the official documentation, using db2inst1/passw0rd credentials (64-bit UNIX).[link](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
-You don't have to create a new instance you can use the present one db2inst1.  
+2. **Configure db2**  
+- Copy ~/mas/db2onfig.sh file to db2 pod with the command:  
+```bas
+oc cp mas/db2config.sh $(oc get pod -o jsonpath="{.items[].metadata.name}"):/tmp
+```
+- Open rsh session with the command:
+```bash
+oc rsh $(oc get pod -o jsonpath="{.items[].metadata.name}")
+```
+- Switch to user db2inst1 with the command:  
+```bash
+su - db2inst1
+```
+- Run configuration script with the command:
+```bash
+source /tmp/db2config.sh
+```
+More details [here](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
 
 4. Complete the setup according to the videos at the top of the page.
