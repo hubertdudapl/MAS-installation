@@ -3,7 +3,7 @@ You can install various MAS applications using Ansible playbooks provided by MAS
 If you prefer manual installation, you can look [here.](https://pages.github.ibm.com/maximoappsuite/deployment-guide/install/cloudpak-for-data)  
 If your infrastructure is insufficient for using CP4D and DB2 Warehouse cluster and you are determined to have MAS Manage, you can choose the below way with a standard db2 docker image.  
   
-There are videos showing how to install and configure MAS Manage
+There are videos showing how to install and configure MAS Manage in case you already have database (not necessarily db2) prepared.  
 - **MAS Manage Installation Deployment Part 1** [video](https://www.youtube.com/watch?v=L5J370gslw8)  
 - **MAS Manage Deployment and Activation Installation Part 2** [video](https://www.youtube.com/watch?v=4xFlrfXxpdg)  
 - **MAS Manage Validate Installation Login as Maxadmin Part 3** [video](https://www.youtube.com/watch?v=nm31i5g4rbs)  
