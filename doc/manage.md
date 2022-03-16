@@ -77,5 +77,6 @@ exit
 exit
 ```
 More details [here](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
+Configuration session [video](https://youtu.be/gceanvUZLH8)  
 
 4. **Complete the setup** according to the videos at the top of the page.
