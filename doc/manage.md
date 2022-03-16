@@ -30,7 +30,30 @@ Wait until the db2 pod is in running status.
 ```
 You can change the password for db2inst1 user in db2-maxdb.yaml file, look at excerpt above. Of course, you have to do that before running _source db2-maxdb.sh_.  
 
-2. **Configure db2**  
+2. **Set the _/database_ folder ownershipp**  
+
+- Open rsh session with the command:
+```bash
+oc rsh $(oc get pod -o jsonpath="{.items[].metadata.name}")
+```
+- Set the ownership:  
+```bash
+chown -R db2inst1:db2iadm1 /database
+```
+- Switch to user db2inst1 with the command:  
+```bash
+su - db2inst1
+```
+- start instance:  
+```bash
+db2start
+```
+- End rsh session:  
+```bash
+exit
+exit
+```
+3. **Configure db2**  
 - Copy ~/mas/db2onfig.sh file to db2 pod with the command:  
 ```bas
 oc cp mas/db2config.sh $(oc get pod -o jsonpath="{.items[].metadata.name}"):/tmp
@@ -47,6 +70,11 @@ su - db2inst1
 ```bash
 source /tmp/db2config.sh
 ```
+- End rsh session:  
+```bash
+exit
+exit
+```
 More details [here](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
 
-4. Complete the setup according to the videos at the top of the page.
+4. **Complete the setup** according to the videos at the top of the page.
