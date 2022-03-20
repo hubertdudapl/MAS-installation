@@ -5,8 +5,9 @@ items:
   metadata:
      name: db2pvc
   spec:
+    storageClassName: rook-cephfs
     accessModes:
-      - ReadWriteOnce
+      - ReadWriteMany
     resources:
        requests:
           storage: 20Gi
@@ -62,9 +63,7 @@ items:
         volumes:
          - name: maxdb-volume-1
            persistentVolumeClaim:
-             claimName: "db2pvc"
-        securityContext:
-           runAsUser: 0       
+             claimName: "db2pvc"     
         serviceAccount: maxdb-sa
         serviceAccountName: maxdb-sa
 - apiVersion: v1
