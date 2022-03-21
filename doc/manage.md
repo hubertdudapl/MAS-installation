@@ -40,6 +40,10 @@ oc rsh $(oc get pod -o jsonpath="{.items[].metadata.name}")
 - Set the ownership:  
 ```bash
 chown -R db2inst1:db2iadm1 /database
+chown root /database/config/db2inst1/sqllib/security/db2chpw
+chown root /database/config/db2inst1/sqllib/security/db2ckpw
+chmod u+s /database/config/db2inst1/sqllib/security/db2chpw
+chmod u+s /database/config/db2inst1/sqllib/security/db2ckpw
 ```
 - Switch to user db2inst1 with the command:  
 ```bash
