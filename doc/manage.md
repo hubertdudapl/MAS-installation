@@ -37,7 +37,7 @@ You can change the password for db2inst1 user in db2-maxdb.yaml file, look at ex
 ```bash
 oc rsh $(oc get pod -o jsonpath="{.items[].metadata.name}")
 ```
-- Set the ownership:  
+- Set the ownerships and flags:  
 ```bash
 chown -R db2inst1:db2iadm1 /database
 chown root /database/config/db2inst1/sqllib/security/db2chpw
