@@ -49,6 +49,22 @@ More details [here](https://github.com/IBM/cloud-pak/blob/master/reference/opera
  Remember, Ansible playbooks, tasks are idempotent it means you can run them many times against the same host and it is completely safe!
 So if you encounter any problems you can correct them and restart the playbook. If your infrastructure or internet connection are slow you can face problems connected with exceeding the time allowed for validation. In most cases, it would be enough just to wait for a while and check on OpenShift if all pods etc. are ready and then start playbook again.|
 
+### Service-Binding operator installation
+1. #### Create subscription:  
+```shell
+oc apply -f mas/sbo.yaml
+```
+2. #### Find the install plan:  
+```shell
+installplan=$(oc get installplan -n openshift-operators | grep -i service-binding | awk '{print $1}'); echo "installplan: $installplan"
+```
+3. #### Approve the install plan:  
+```shell
+oc patch installplan ${installplan} -n openshift-operators --type merge --patch '{"spec":{"approved":true}}'
+```
+| NOTICE |
+| --- |
+|MAS 8.6 and earlier requires Service-Binding operator 0.8, so if it is your case pls follow the instruction provided [here](https://www.ibm.com/support/pages/node/6477000)|    
 ### MongoDB
 1. #### Customize ~/mas/mongo.yaml file
 ```yaml
