@@ -83,15 +83,17 @@ exit
 More details [here](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
 Configuration session [video](https://youtu.be/gceanvUZLH8)  
 
-4. **Complete the setup** according to the videos at the top of the page.  
+4. **Complete the setup** - general steps, details in videos at the top of the page    
 - Login to the MAS Admin Console  
 - Select Catalog ( on the left menu, or one of the tiels on the main screen ).  
 - Click on _Manage_ tile.  
+![Catalog-Manage](../img/manage-01.png)  
 Now you can add industry solutions and/or add-ons.  
 - Click the _Continue_ button.  
 - Select version and upgrade strategy (default are the latest version and automatic approval)  
 - Click the _Subscribe to channel 8.x_ button.  
 - Wait until the first four tiles get in the right upper corner green circle with a white checkmark and below will be show table with applications and their statuses with similar checkmarks.  
+![Catalog-Manage](../img/manage-02.png)  
 
 |NOTICE|
 |------|
@@ -103,13 +105,19 @@ Now you can add industry solutions and/or add-ons.
   - User name: db2inst1  
   - Password: passw0rd  
   - Uncheck SSL Enabled  
-- Click on link Show advanced settings and define:  
+![Catalog-Manage](../img/manage-03.png) 
+- Click on link _Show advanced settings_ and define:  
   - Options for database:  
     - Schema: MAXIMO  
     - Table space: maxdata  
     - Index space: maxindex  
     - Check Initial demo data  
+![Catalog-Manage](../img/manage-04.png) 
   - Options for languages:  
     - In the Additional list select PL ( or what you prefer )  
-- Click Activate button and wait for successful deployment.  
-- Now you have to add entitlements to the users ( e.g. demo users ) and you can log in to MAS console and select Manage tile, which will lead you to MAS Manage interface.  
+- Click _Activate_ button and wait for successful activation.  
+![Catalog-Manage](../img/manage-05.png) 
+![Catalog-Manage](../img/manage-06.png) 
+- You have to add entitlements to the users ( e.g. Manage demo users )
+- Log in to MAS console with credential with entitlement to MAS Manage
+- Select Manage tile, which will lead you to MAS Manage interface.  
