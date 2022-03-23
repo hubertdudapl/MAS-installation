@@ -82,6 +82,9 @@ exit
 ```
 More details [here](https://www.ibm.com/docs/en/maximo-manage/8.2.0?topic=deployment-configuring-db2)  
 Configuration session [video](https://youtu.be/gceanvUZLH8)  
+  
+Alternatively, you can install db2 dedicated for OpenShift using an operator provided by IBM. To do that, pls follow [the instruction](https://www.ibm.com/cloud/blog/deploy-the-db2-community-edition-operator-on-openshift-4x-using-red-hat-codeready-containers)  
+It is a much safer option and still not so greedy as CP4D.
 
 4. **Complete the setup** - general steps, details in videos at the top of the page    
 - Login to the MAS Admin Console  
