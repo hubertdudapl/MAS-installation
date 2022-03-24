@@ -26,7 +26,7 @@ python -m pip install ansible openshift==0.11.2
 ```
 2. Install Ansible Galaxy collection with the command:  
 ```bash
-ansible-galaxy collection install ibm.mas_devops
+ansible-galaxy collection install ibm.mas_devops:5.3.1
 ```
 More details [here](https://ibm-mas.github.io/ansible-devops/)
 
