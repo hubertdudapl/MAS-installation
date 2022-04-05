@@ -14,10 +14,11 @@
     mas_instance_id: masinst1
     mas_config_dir: ~/masconfig
     sls_cfg_file: "{{ mas_config_dir }}/sls.yml"
-    mongodb_cfg_file: "{{mas_config_dir}}/mongo-mongoce.yml"
+    sls_mongodb_cfg_file: "{{mas_config_dir}}/mongo-mongoce.yml"
     bootstrap:
       license_id: da5dc3b8762b
       registration_key: "{{ lookup('env', 'SLS_REGISTRATION_KEY') | default('', true) }}"
       entitlement_file: "{{mas_config_dir}}/license.dat"
   roles:
     - ibm.mas_devops.sls_install
+    - ibm.mas_devops.gencfg_sls
