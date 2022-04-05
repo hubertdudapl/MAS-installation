@@ -26,7 +26,7 @@ mkdir {mas,masconfig}
 Prerequisite is to have installed Python 3.8.
 1. Install Ansible with the command:  
 ```bash
-python -m pip install ansible openshift==0.11.2
+python3 -m pip install ansible junit_xml pymongo xmljson kubernetes==12.0.1 openshift==0.12.1
 ```
 2. Install Ansible Galaxy collection with the command:  
 ```bash
