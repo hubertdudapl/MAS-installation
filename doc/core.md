@@ -8,7 +8,11 @@ All ansible playbooks were taken from [MAS Devops Ansible Collection](https://ib
 ![Key download page](../img/IBM-entitle-key.png)
 - **MAS License file** (only the license id matters)  
 --IBMers can generate file [here](https://www.ibm.com/support/pages/ibm-support-licensing-start-page)  
---BPs – [PartnerWorld](https://www.ibm.com/partnerworld/public)
+--BPs – [PartnerWorld](https://www.ibm.com/partnerworld/public)  
+
+| NOTICE |
+| --- |
+|During licence file generation, remember to provide as _Host ID Type_ Ethernet Address and in _Host ID_ field place MAC address without any separators e.g. for 2b:86:ba:ed:c4:23 provide  2b86baedc423.|
 ## Prerequisites
 Create two subfolders in your home folder, the one from which you will issue shell commands, e.g.:
 - **mas** – for playbooks and YAML files; copy here files from the mas folder of the project – playbooks and YAML
@@ -129,13 +133,14 @@ oc apply -f mas/certman.yaml
     mas_instance_id: masinst1 # MAS instance name which you has chosen during the mongo installation
     mas_config_dir: ~/masconfig
     sls_cfg_file: "{{ mas_config_dir }}/sls.yml"
-    mongodb_cfg_file: "{{mas_config_dir}}/mongo-mongoce.yml"
+    sls_mongodb_cfg_file: "{{mas_config_dir}}/mongo-mongoce.yml"
     bootstrap:
       license_id: da5dc3b8762b # your licence id
       registration_key: "{{ lookup('env', 'SLS_REGISTRATION_KEY') | default('', true) }}"
       entitlement_file: "{{mas_config_dir}}/license.dat" # your licence file in masconfig folder
   roles:
     - ibm.mas_devops.sls_install
+    - ibm.mas_devops.gencfg_sls
 ```
 Customize parameters:  
  - **sls_entitlement_key** - your ibm entitlement key
@@ -153,22 +158,22 @@ Instalatin sesssion:
 - [video](https://youtu.be/KWuLBe8RRXk)
 
 
-### Behavior Analytics Services
-1. Customize ~/mas/bas.yaml file
+### IBM User Data Services (previously known as IBM Behavior Analytics Services)
+1. Customize ~/mas/uds.yaml file
 ```yaml
 - hosts: localhost
   any_errors_fatal: true
   vars:
-    bas_persistent_storage_class: rook-cephfs # storageclass available on your OpenShift (RWX)  
-    bas_meta_storage_class: rook-ceph-block # storageclass available on your OpenShift (RWO)  
-    mas_instance_id: masinst1 # MAS instance name which you has chosen during the mongo installation
+    uds_meta_storage_class: rook-ceph-block
+    uds_storage_class: rook-cephfs
+    mas_instance_id: masinst1
     mas_config_dir: ~/masconfig
-    bas_contact:
-      email: 'jan.kowalski@pl.ibm.com' # your email
-      firstName: 'jan'   # your first name
-      lastName: 'kowalski'      # your last name
+    uds_contact:
+      email: "jan.kowalski@pl.ibm.com"
+      first_name: "jan"
+      last_name: "kowalski"
   roles:
-  - ibm.mas_devops.bas_install
+  - ibm.mas_devops.uds_install
 ```
 Customize parameters:  
  - **bas_persistent_storage_class** - storageclass available on your OpenShift (RWX)
