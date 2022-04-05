@@ -154,6 +154,7 @@ Customize parameters:
 ```shell
 ansible-playbook mas/sls.yaml
 ```
+The _sls.yml_ file will appear in masconfig subdirectory.  
 Instalatin sesssion:  
 - [video](https://youtu.be/KWuLBe8RRXk)
 
@@ -187,6 +188,7 @@ Customize parameters:
 ```shell
 ansible-playbook mas/uds.yaml
 ```
+The _bas-ibm-common-services.yml_ file will appear in masconfig subdirectory.  
 Instalatin sesssion:  
 - [picture](../img/uds.png)
 - [video - BAS](https://youtu.be/BPHbEhBKNbU) 
