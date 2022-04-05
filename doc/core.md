@@ -164,8 +164,8 @@ Instalatin sesssion:
 - hosts: localhost
   any_errors_fatal: true
   vars:
-    uds_meta_storage_class: rook-ceph-block
     uds_storage_class: rook-cephfs
+    uds_meta_storage_class: rook-ceph-block
     mas_instance_id: masinst1
     mas_config_dir: ~/masconfig
     uds_contact:
@@ -176,20 +176,20 @@ Instalatin sesssion:
   - ibm.mas_devops.uds_install
 ```
 Customize parameters:  
- - **bas_persistent_storage_class** - storageclass available on your OpenShift (RWX)
- - **bas_meta_storage_class** - storageclass available on your OpenShift (RWO)   
+ - **uds_storage_class** - storageclass available on your OpenShift (RWX)
+ - **uds_meta_storage_class** - storageclass available on your OpenShift (RWO)   
  - **mas_instance_id** - MAS instance name which you has chosen during the mongo installation
  - **mas_config_dir** -  folder where configuration files will go 
  - **email** - your email  
- - **firstName** - your first name  
- - **lastName** -   your last name
-2. Install BAS with the command:  
+ - **first_name** - your first name  
+ - **last_name** -   your last name
+2. Install UDS with the command:  
 ```shell
-ansible-playbook mas/bas.yaml
+ansible-playbook mas/uds.yaml
 ```
 Instalatin sesssion:  
-- [picture](../img/bas.png)
-- [video](https://youtu.be/BPHbEhBKNbU)
+- [picture](../img/uds.png)
+- [video - BAS](https://youtu.be/BPHbEhBKNbU)
 
 ### MAS Core
 1. Customize ~/mas/core.yaml file
