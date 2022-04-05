@@ -189,7 +189,11 @@ ansible-playbook mas/uds.yaml
 ```
 Instalatin sesssion:  
 - [picture](../img/uds.png)
-- [video - BAS](https://youtu.be/BPHbEhBKNbU)
+- [video - BAS](https://youtu.be/BPHbEhBKNbU) 
+
+Before starting MAS Core installation, make sure you have in _~/masconfig_ folder the files below.  
+  
+![masconfig](../img/masconfig.png)
 
 ### MAS Core
 1. Customize ~/mas/core.yaml file
